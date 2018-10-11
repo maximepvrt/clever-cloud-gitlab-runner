@@ -26,7 +26,7 @@ gitlab-runner register --non-interactive \
   --url "$GITLAB_INSTANCE/" \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
-  --executor docker                                                                       
+  --executor docker \                                                                       
   --tag-list docker \                                                                                        
   --docker-image "docker:stable" \                                                                           
   --docker-privileged
