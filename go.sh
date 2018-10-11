@@ -24,7 +24,7 @@ echo "👋 launching new gitlab-runner"
 
 gitlab-runner register --non-interactive \
   --url "$GITLAB_INSTANCE/" \
-  --name $RUNNER_NAME   --registration-token $REGISTRATION_TOKEN   --executor shell
+  --name $RUNNER_NAME   --registration-token $REGISTRATION_TOKEN   --executor docker
 
 gitlab-runner run &
 
