@@ -26,11 +26,10 @@ gitlab-runner register --non-interactive \
   --url "$GITLAB_INSTANCE/" \
   --name $RUNNER_NAME \
   --registration-token $REGISTRATION_TOKEN \
-  --description "docker-ruby-2.1" \
-  --executor "docker" \
-  --docker-image ruby:2.1 \
-  --docker-postgres latest \
-  --docker-mysql latest
+  --executor docker                                                                       
+  --tag-list docker \                                                                                        
+  --docker-image "docker:stable" \                                                                           
+  --docker-privileged
 
 gitlab-runner run &
 
