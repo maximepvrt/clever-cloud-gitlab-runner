@@ -24,7 +24,13 @@ echo "👋 launching new gitlab-runner"
 
 gitlab-runner register --non-interactive \
   --url "$GITLAB_INSTANCE/" \
-  --name $RUNNER_NAME   --registration-token $REGISTRATION_TOKEN   --executor docker
+  --name $RUNNER_NAME \
+  --registration-token $REGISTRATION_TOKEN \
+  --description "docker-ruby-2.1" \
+  --executor "docker" \
+  --docker-image ruby:2.1 \
+  --docker-postgres latest \
+  --docker-mysql latest
 
 gitlab-runner run &
 
