@@ -28,8 +28,7 @@ gitlab-runner register --non-interactive \
   --registration-token $REGISTRATION_TOKEN \
   --executor docker \
   --tag-list docker \
-  --docker-image "docker:stable" \
-  --docker-privileged
+  --docker-image "docker:stable"
 
 gitlab-runner run &
 
