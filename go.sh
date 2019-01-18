@@ -27,6 +27,8 @@ gitlab-runner register --non-interactive \
   --tag-list docker \
   --docker-image "docker:stable"
 
+gitlab-runner config --concurent 10
+
 gitlab-runner run &
 
 echo "🌍 executing the http server"
