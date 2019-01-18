@@ -1,23 +1,20 @@
 #!/bin/sh
 
-# Get the id of the runner (if exists)
-id=$(curl --header \
-  "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" \
-  "$GITLAB_INSTANCE/api/v4/runners" | python3 -c \
-'
-import sys, json;
-json_data=json.load(sys.stdin)
-for item in json_data:
-  if item["description"] == "'$RUNNER_NAME'":
-    print(item["id"])
-')
+# Get the id of old runners (if exists)
+json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
 
-echo "👋 id of $RUNNER_NAME runner is: $id"
+for row in $(echo "${json}" | jq -r '.[] | @base64'); do
+    _jq() {
+     echo ${row} | base64 --decode | jq -r ${1}
+    }
 
-echo "⚠️ trying to deactivate runner..."
-
-curl --request DELETE --header   "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN"   "$GITLAB_INSTANCE/api/v4/runners/$id"
-
+    if [ $(_jq '.description') == $RUNNER_NAME ]
+    then
+      echo "👋 old runner $RUNNER_NAME runner is: $(_jq '.id')"
+      echo "⚠️ trying to deactivate runner..."
+      curl --request DELETE --header   "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN"   "$GITLAB_INSTANCE/api/v4/runners/$(_jq '.id')" 
+    fi
+done
 
 # Register, then run the new runner
 echo "👋 launching new gitlab-runner"
