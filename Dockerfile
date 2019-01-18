@@ -13,5 +13,6 @@ RUN apt-get update && \
     apt-get install -y gitlab-runner && \
     curl -sL https://deb.nodesource.com/setup_9.x | bash  && \
     apt-get -y install nodejs && \
+    npm install -g fx \
     echo "👋 🦊 Runner is installed" 
 CMD [ "/go.sh" ]
