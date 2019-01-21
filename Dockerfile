@@ -1,7 +1,7 @@
 FROM gitlab/gitlab-runner:latest
 
 RUN apt-get update && \
-    apt-get -y install jq python3.6 && \
+    apt-get -y install jq python3.4 && \
     echo "👋 🦊 Runner is installed" 
 
 COPY go.sh /go.sh
