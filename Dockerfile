@@ -2,7 +2,7 @@
 FROM gitlab/gitlab-runner:latest
 
 COPY go.sh /home/gitlab-runner/go.sh
-RUN chmod +x go.sh
+RUN chmod +x /home/gitlab-runner/go.sh
 
 RUN apt-get update && \
     apt-get -y install jq && \
