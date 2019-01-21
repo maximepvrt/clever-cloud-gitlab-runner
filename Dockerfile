@@ -6,6 +6,6 @@ RUN chmod +x go.sh
 
 # Install gitlab-runner and nodejs
 RUN apt-get update && \
-    apt-get -y install nodejs jq && \
+    apt-get -y install jq && \
     echo "👋 🦊 Runner is installed" 
-CMD [ "/go.sh" ]
+CMD [ "./go.sh" ]
