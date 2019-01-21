@@ -27,7 +27,6 @@ gitlab-runner register --non-interactive \
   --tag-list docker \
   --docker-image "docker:stable"
 
-gitlab-runner config --concurent 10
 sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
 
 echo "🌍 executing the http server"
