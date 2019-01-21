@@ -30,7 +30,4 @@ gitlab-runner register --non-interactive \
 gitlab-runner config --concurent 10
 sed -i -e 's/concurrent = 1/concurrent = 10/g' /etc/gitlab-runner/config.toml
 
-gitlab-runner run &
-
 echo "🌍 executing the http server"
-python3 -m http.server 8080
