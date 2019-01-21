@@ -1,11 +1,10 @@
 # Runner for a nodejs project
 FROM gitlab/gitlab-runner:latest
 
-COPY go.sh go.sh
+COPY go.sh /home/gitlab-runner/go.sh
 RUN chmod +x go.sh
 
-# Install gitlab-runner and nodejs
 RUN apt-get update && \
     apt-get -y install jq && \
     echo "👋 🦊 Runner is installed" 
-CMD [ "./go.sh" ]
+CMD [ "/home/gitlab-runner/go.sh" ]
