@@ -6,4 +6,5 @@ RUN apt-get update && \
 
 COPY go.sh /go.sh
 ENTRYPOINT ["/go.sh"]
+EXPOSE 8080
 CMD ["run", "--working-directory=/home/gitlab-runner", "--user=gitlab-runner"]
