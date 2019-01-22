@@ -1,5 +1,7 @@
 FROM ubuntu:16.04
 
+ENV PATH="${PATH}:/usr/local/bin"
+
 COPY go.sh go.sh
 RUN chmod +x go.sh
 
