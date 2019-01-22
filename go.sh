@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Get the id of old runners (if exists)
 json=$(curl --header "PRIVATE-TOKEN: $PERSONAL_ACCESS_TOKEN" "$GITLAB_INSTANCE/api/v4/runners")
