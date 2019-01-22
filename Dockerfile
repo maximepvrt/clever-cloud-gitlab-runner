@@ -1,5 +1,5 @@
 # Runner for a nodejs project
-FROM FROM ubuntu:16.04
+FROM ubuntu:16.04
 
 COPY go.sh go.sh
 RUN chmod +x go.sh
